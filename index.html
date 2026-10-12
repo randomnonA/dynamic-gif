@@ -1,22 +1,22 @@
 <script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library@1.0.1/build/nn.min.js"></script>
 <script>
   /* global nn */
-  let fg, bg
+  let front, back
 
   function setup () {
     // pick two random colors
-    fg = nn.randomColor()
-    bg = nn.randomColor()
+    front = nn.randomColor()
+    back = nn.randomColor()
     // ensure WCGA AA conlor contrast
-    while (nn.colorContrast(fg, bg) < 2.8) {
-      fg = nn.randomColor()
+    while (nn.colorContrast(front, back) < 2.8) {
+      front = nn.randomColor()
     }
     // update body's content and styles
     nn.get('body')
-      .content('Hi World Wide Web!')
+      .content('Speed')
       .css({ 
-        color: fg, 
-        background: bg,
+        color: front, 
+        background: back,
         overflow: 'hidden',
         height: '100vh',
         display: 'grid',
@@ -25,7 +25,7 @@
         fontSize: 72
       })
     // run the createGif function 50 times
-    nn.times(100, createGif)
+    nn.times(500, createGif)
   }
   
   function createGif () {
@@ -33,7 +33,7 @@
     const x = nn.random(-100, nn.width + 100)
     const y = nn.random(-100, nn.height + 100)
     const r = nn.random(360)
-    const c = nn.toHSL(fg)
+    const c = nn.toHSL(front)
     // create an img element for our butterfly gif
     nn.create('img')
       .set('src', 'butterfly.gif')
